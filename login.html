@@ -1,0 +1,80 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="login.css">
+	<title>Login</title>
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
+  <div class="container">
+    <div class="header">
+			<div id="log">
+      <h1>Bienvenu(e)</h1>
+
+    </div>
+    <form name="login" onsubmit="return validade();" method="post">
+      <ul>
+        <li class="fontawesome-user">   Username: <input class="user" type="text" name="username">
+        </li>
+        <li class="fontawesome-lock">   Password: <input class="pass" type="password" name="password">
+        </li>
+      </ul>
+      <input type="button" class="submit" value="Log In" name="submit" onclick="validate()">
+    </form>
+  </div>
+	<script>
+
+
+function validate()
+{
+
+  var un = document.login.username.value;
+  var pw = document.login.password.value;
+  var valid = false;
+  var usernameArray = "admin";
+  var passwordArray = "12345";
+
+  if ((un == usernameArray) && (pw == passwordArray))
+  {
+
+    valid = true;
+    localStorage.setItem('username',un);
+    alert("Login was succesful");
+    window.location = "index.html";
+    return true;
+  }
+
+
+
+var again = "tries";
+
+if (!valid)
+{
+
+  again = "try"
+}
+  if ((un == usernameArray) != (pw == passwordArray))
+  {
+    alert("Wrong password or username")
+
+
+  }
+  else
+  {
+    alert("Incorrect password or  username you are now blocked");
+    document.login.username.value =  "You are  now Blocked";
+    document.login.password.value = "Foll you can´t see this";
+    document.login.username.disabled = true;
+    document.login.password.disabled = true;
+    return false;
+  }
+}
+
+localStorage.setItem("username",true);
+//sessionStorage.setItem("username", "Bradley");
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>
